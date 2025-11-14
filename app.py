@@ -47,10 +47,11 @@ def choose(animal):
         st.session_state.winner = False
 
 
+# ---------- TÍTULO ----------
 st.markdown("<h1 style='text-align:center;'>🐾</h1>", unsafe_allow_html=True)
 
 
-# ---------------- FASE PLAY ----------------
+# ---------- FASE PLAY ----------
 if st.session_state.phase == "play":
 
     if st.button("▶️", use_container_width=True):
@@ -59,10 +60,9 @@ if st.session_state.phase == "play":
     st.stop()
 
 
-# ---------------- FASE CHOOSE ----------------
+# ---------- FASE CHOOSE ----------
 if st.session_state.phase == "choose":
 
-    # TOCA SOM APÓS O CLIQUE REAL DO BOTÃO (agora permitido pelo navegador)
     st.markdown(audio_html(animals[st.session_state.target]["sound"]), unsafe_allow_html=True)
 
     animal_keys = list(animals.keys())
@@ -71,15 +71,31 @@ if st.session_state.phase == "choose":
     cols = st.columns(2)
 
     for i, animal in enumerate(animal_keys):
+        img_bytes = open(animals[animal]["img"], "rb").read()
+        img_b64 = base64.b64encode(img_bytes).decode()
+
+        img_html = f"""
+        <div style="text-align:center; margin-bottom:20px;">
+            <img src="data:image/jpg;base64,{img_b64}" 
+                 style="width:100%; border-radius:10px; cursor:pointer;"
+                 onclick="fetch('/?click={animal}')">
+        </div>
+        """
+
         with cols[i % 2]:
-            if st.button(" ", key=f"btn_{animal}"):
-                choose(animal)
-            st.image(str(animals[animal]["img"]), use_container_width=True)
+            st.markdown(img_html, unsafe_allow_html=True)
+
+    params = st.experimental_get_query_params()
+
+    if "click" in params:
+        choice = params["click"][0]
+        choose(choice)
+        st.experimental_set_query_params()
 
     st.stop()
 
 
-# ---------------- FASE WIN ----------------
+# ---------- FASE WIN ----------
 if st.session_state.phase == "win":
 
     if st.session_state.winner:
