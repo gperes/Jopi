@@ -10,7 +10,7 @@ ASSETS = Path("assets")
 animals = {
     "cachorro": {"img": ASSETS/"cachorro.jpg", "sound": ASSETS/"cachorro.mp3"},
     "gato": {"img": ASSETS/"gato.jpg", "sound": ASSETS/"gato.mp3"},
-    "passarinho": {"img": ASSETS/"vaca.jpg", "sound": ASSETS/"passarinho.mp3"},
+    "passarinho": {"img": ASSETS/"passarinho.jpg", "sound": ASSETS/"passarinho.mp3"},
     "pato": {"img": ASSETS/"pato.jpg", "sound": ASSETS/"pato.mp3"},
 }
 
