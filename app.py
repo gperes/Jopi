@@ -8,10 +8,10 @@ st.set_page_config(page_title="Animais", page_icon="🐾", layout="centered")
 ASSETS = Path("assets")
 
 animals = {
-    "cachorro": {"img": ASSETS/"cachorro.png", "sound": ASSETS/"cachorro.mp3"},
-    "gato": {"img": ASSETS/"gato.png", "sound": ASSETS/"gato.mp3"},
-    "vaca": {"img": ASSETS/"vaca.png", "sound": ASSETS/"vaca.mp3"},
-    "pato": {"img": ASSETS/"pato.png", "sound": ASSETS/"pato.mp3"},
+    "cachorro": {"img": ASSETS/"cachorro.jpg", "sound": ASSETS/"cachorro.mp3"},
+    "gato": {"img": ASSETS/"gato.jpg", "sound": ASSETS/"gato.mp3"},
+    "passarinho": {"img": ASSETS/"vaca.jpg", "sound": ASSETS/"passarinho.mp3"},
+    "pato": {"img": ASSETS/"pato.jpg", "sound": ASSETS/"pato.mp3"},
 }
 
 if "target" not in st.session_state:
